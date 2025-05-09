@@ -8,7 +8,6 @@ namespace SupermarketWEB.Pages.Categories
 {
     public class IndexModel : PageModel
     {
-
         private readonly SupermarketContext _context;
         public IndexModel(SupermarketContext context)
         {
@@ -16,6 +15,7 @@ namespace SupermarketWEB.Pages.Categories
         }
 
         public IList<Category> Categories { get; set; } = default!;
+
         public async Task OnGetAsync()
         {
             if (_context.Categories != null)
