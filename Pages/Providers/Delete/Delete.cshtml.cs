@@ -16,7 +16,7 @@ namespace SupermarketWEB.Pages.Providers
         }
 
         [BindProperty]
-        public SupermarketWEB.Models.Product Providers { get; set; } = default!;
+        public SupermarketWEB.Models.Providers Providers { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -33,7 +33,7 @@ namespace SupermarketWEB.Pages.Providers
             }
             else
             {
-                Providers = product; // Correctly assign the retrieved product to the property
+                Providers = Providers; // Correctly assign the retrieved product to the property
             }
 
             return Page();

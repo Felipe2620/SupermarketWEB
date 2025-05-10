@@ -48,7 +48,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Pages\Providers\Create\" />
   </ItemGroup>
 
 </Project>
