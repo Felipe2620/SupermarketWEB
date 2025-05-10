@@ -12,21 +12,25 @@
     <Compile Remove="Pages\Categories\Update\**" />
     <Compile Remove="Pages\Categories\Visualizar\NewFolder1\**" />
     <Compile Remove="Pages\Categories\Visualizar\NewFolder\**" />
+    <Compile Remove="Pages\Products\NewFolder\**" />
     <Content Remove="Pages\Categories\Create\NewFolder1\**" />
     <Content Remove="Pages\Categories\Create\NewFolder\**" />
     <Content Remove="Pages\Categories\Update\**" />
     <Content Remove="Pages\Categories\Visualizar\NewFolder1\**" />
     <Content Remove="Pages\Categories\Visualizar\NewFolder\**" />
+    <Content Remove="Pages\Products\NewFolder\**" />
     <EmbeddedResource Remove="Pages\Categories\Create\NewFolder1\**" />
     <EmbeddedResource Remove="Pages\Categories\Create\NewFolder\**" />
     <EmbeddedResource Remove="Pages\Categories\Update\**" />
     <EmbeddedResource Remove="Pages\Categories\Visualizar\NewFolder1\**" />
     <EmbeddedResource Remove="Pages\Categories\Visualizar\NewFolder\**" />
+    <EmbeddedResource Remove="Pages\Products\NewFolder\**" />
     <None Remove="Pages\Categories\Create\NewFolder1\**" />
     <None Remove="Pages\Categories\Create\NewFolder\**" />
     <None Remove="Pages\Categories\Update\**" />
     <None Remove="Pages\Categories\Visualizar\NewFolder1\**" />
     <None Remove="Pages\Categories\Visualizar\NewFolder\**" />
+    <None Remove="Pages\Products\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +40,18 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Pages\Products\Create\" />
+    <Folder Include="Pages\Products\Delete\" />
+    <Folder Include="Pages\Products\Edit\" />
+    <Folder Include="Pages\Products\Visualizar\" />
+    <Folder Include="Pages\Providers\Create\" />
+    <Folder Include="Pages\Providers\Delete\" />
+    <Folder Include="Pages\Providers\Edit\" />
+    <Folder Include="Pages\Providers\Visualizar\" />
   </ItemGroup>
 
 </Project>

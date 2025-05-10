@@ -4,7 +4,7 @@ using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 
 
-namespace SupermarketWEB.Pages.Categories
+namespace SupermarketWEB.Pages.PayMode
 {
     public class CreateModel : PageModel
     {
@@ -21,20 +21,19 @@ namespace SupermarketWEB.Pages.Categories
         }
 
         [BindProperty]
-        public Category Category { get; set; } = default!;
+        public SupermarketWEB.Models.PayMode PayMode { get; set; } = default!;
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid || _context.Categories == null || Category == null)
+            if (!ModelState.IsValid || _context.PayMode == null || PayMode == null)
             {
                 return Page();
             }
 
-            _context.Categories.Add(Category);
+            _context.PayMode.Add(PayMode);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Categories/Visualizar/Index");
+            return RedirectToPage("/PayMode/Visualizar/Index");
         }
-
     }
 }

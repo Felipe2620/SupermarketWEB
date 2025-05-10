@@ -1,0 +1,38 @@
+﻿@page
+@model SupermarketWEB.Pages.PayMode.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<h1>Edit</h1>
+
+<h4>PayMode</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PayMode.Id"/>
+            <div class="form-group">
+                <label asp-for="PayMode.NameTarjet" class=" control-label"></label>                     v
+                <input asp-for="PayMode.NameTarjet" class="form-control" />
+                <span asp-validation-for="PayMode.NameTarjet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PayMode.NumberTarjet" class="control-label"></label>
+                <input asp-for="PayMode.NumberTarjet" class="form-control" />
+                <span asp-validation-for="PayMode.NumberTarjet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+                <a asp-page=" /PayMode/Visualizar/Index" class="btn btn-primary"> Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_validationScriptsPartial");
+    }
+
+}

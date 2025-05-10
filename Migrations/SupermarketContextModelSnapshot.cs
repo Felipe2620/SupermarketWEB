@@ -42,6 +42,27 @@ namespace SupermarketWEB.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("SupermarketWEB.Models.PayMode", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NameTarjet")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumberTarjet")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PayMode");
+                });
+
             modelBuilder.Entity("SupermarketWEB.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -57,8 +78,14 @@ namespace SupermarketWEB.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PayModeId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(6,2)");
+
+                    b.Property<int?>("ProvidersId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Stock")
                         .HasColumnType("int");
@@ -67,7 +94,36 @@ namespace SupermarketWEB.Migrations
 
                     b.HasIndex("CategoryID");
 
+                    b.HasIndex("PayModeId");
+
+                    b.HasIndex("ProvidersId");
+
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("SupermarketWEB.Models.Providers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Providers");
                 });
 
             modelBuilder.Entity("SupermarketWEB.Models.Product", b =>
@@ -78,10 +134,28 @@ namespace SupermarketWEB.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SupermarketWEB.Models.PayMode", null)
+                        .WithMany("Products")
+                        .HasForeignKey("PayModeId");
+
+                    b.HasOne("SupermarketWEB.Models.Providers", null)
+                        .WithMany("Products")
+                        .HasForeignKey("ProvidersId");
+
                     b.Navigation("Category");
                 });
 
             modelBuilder.Entity("SupermarketWEB.Models.Category", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("SupermarketWEB.Models.PayMode", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("SupermarketWEB.Models.Providers", b =>
                 {
                     b.Navigation("Products");
                 });
