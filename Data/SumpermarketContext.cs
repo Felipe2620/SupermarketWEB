@@ -13,8 +13,8 @@ namespace SupermarketWEB.Data
 
         public DbSet<Category> Categories { get; set; }
 
-        protected SupermarketContext()
-        {
-        }
+       
+        
+        
     }
 }

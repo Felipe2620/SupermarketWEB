@@ -1,4 +1,4 @@
-﻿﻿@page
+﻿@page
 @model SupermarketWEB.Pages.Categories.DeleteModel
 @{
     ViewData["Title"] = "Delete";
@@ -25,6 +25,6 @@
     <form method="post">
         <input type="hidden" asp-for="Category.Id"/>
         <input type="submit" value="Delete" class="btn btn-danger"/>
-        <a asp-page="./Index" class="btn btn-primary">Back to List</a>
+        <a asp-page="/Categories/Index" class="btn btn-primary">Back to List</a>
     </form>
-</div>
+</div>  

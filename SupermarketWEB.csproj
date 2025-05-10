@@ -7,8 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Agregar\NewFolder1\**" />
+    <Compile Remove="Pages\Agregar\NewFolder\**" />
+    <Compile Remove="Pages\Categories\NewFolder1\**" />
+    <Compile Remove="Pages\Categories\NewFolder\**" />
+    <Content Remove="Pages\Agregar\NewFolder1\**" />
+    <Content Remove="Pages\Agregar\NewFolder\**" />
+    <Content Remove="Pages\Categories\NewFolder1\**" />
+    <Content Remove="Pages\Categories\NewFolder\**" />
+    <EmbeddedResource Remove="Pages\Agregar\NewFolder1\**" />
+    <EmbeddedResource Remove="Pages\Agregar\NewFolder\**" />
+    <EmbeddedResource Remove="Pages\Categories\NewFolder1\**" />
+    <EmbeddedResource Remove="Pages\Categories\NewFolder\**" />
+    <None Remove="Pages\Agregar\NewFolder1\**" />
+    <None Remove="Pages\Agregar\NewFolder\**" />
+    <None Remove="Pages\Categories\NewFolder1\**" />
+    <None Remove="Pages\Categories\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

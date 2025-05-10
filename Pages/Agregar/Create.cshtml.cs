@@ -25,15 +25,18 @@ namespace SupermarketWEB.Pages.Categories
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid || _context.Categories == null || Category == null)
+            Console.WriteLine("SE HIZO POST"); // Confirmación
+            if (!ModelState.IsValid)
             {
+                Console.WriteLine("Modelo inválido");
                 return Page();
             }
 
             _context.Categories.Add(Category);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Categories/Index");
         }
+
     }
 }
