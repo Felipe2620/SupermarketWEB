@@ -15,7 +15,7 @@ namespace SupermarketWEB.Pages.Providers
         }
 
         [BindProperty]
-        public SupermarketWEB.Models.Product Providers { get; set; } = default!;
+        public SupermarketWEB.Models.Providers Providers { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
