@@ -49,9 +49,6 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Pages\Providers\Create\" />
-    <Folder Include="Pages\Providers\Delete\" />
-    <Folder Include="Pages\Providers\Edit\" />
-    <Folder Include="Pages\Providers\Visualizar\" />
   </ItemGroup>
 
 </Project>
