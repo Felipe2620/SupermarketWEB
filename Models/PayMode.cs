@@ -6,12 +6,12 @@ namespace SupermarketWEB.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        public string NameTarjet { get; set; } = string.Empty;
+        [Display(Name = "NameTarjet")]
+        public string NameTarjet { get; set; }
 
-        [Required]
-        public string NumberTarjet { get; set; } = string.Empty;
+        [Display(Name = "NumberTarjet")]
+        public string NumberTarjet { get; set; }
 
-        public ICollection<Product> Products { get; set; } = new List<Product>();
+        public ICollection<Product> Products { get; set; }
     }
 }
