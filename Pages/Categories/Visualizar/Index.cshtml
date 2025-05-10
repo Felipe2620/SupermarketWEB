@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/Categories"
 @model SupermarketWEB.Pages.Categories.IndexModel
 @{
     ViewData["Title"] = "Index Categories";
@@ -6,7 +6,7 @@
 <h1>Index Categories</h1>
 
 <p>
-    <a asp-page="/Agregar/Create" class="btn btn-success">Create New</a>
+    <a asp-page="/Categories/Create/Create" class="btn btn-success">Create New</a>
 </p>
 
 <table class="table">
@@ -32,8 +32,8 @@
                     @Html.DisplayFor(modelItem=>item.Description)
                 </td>
                 <td>
-                    <a asp-page="/Agregar/Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                    <a asp-page="/Agregar/Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                    <a asp-page="/Categories/Edit/Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                    <a asp-page="/Categories/Delete/Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }

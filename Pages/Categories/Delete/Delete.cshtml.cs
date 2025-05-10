@@ -54,7 +54,7 @@ namespace SupermarketWEB.Pages.Categories
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Categories/Visualizar/Index");
         }
     }
 }

@@ -35,7 +35,7 @@ namespace SupermarketWEB.Pages.Categories
             _context.Categories.Add(Category);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Categories/Index");
+            return RedirectToPage("/Categories/Visualizar/Index");
         }
 
     }
