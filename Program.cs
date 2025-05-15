@@ -9,21 +9,22 @@ namespace SupermarketWEB
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.  
+            // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddDbContext<SupermarketContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("SupermarketDB")));
 
-            var app = builder.Build();
             builder.Services.AddAuthentication("MyCookieAuth")
-               .AddCookie("MyCookieAuth", config =>
-               {
-                   config.Cookie.Name = "MyCookieAuth";
-                   config.LoginPath = "/Account/Login";
-                   config.AccessDeniedPath = "/Account/AccessDenied";
-               });
+                .AddCookie("MyCookieAuth", config =>
+                {
+                    config.Cookie.Name = "MyCookieAuth";
+                    config.LoginPath = "/Account/Login";
+                    config.AccessDeniedPath = "/Account/AccessDenied";
+                });
 
-            // Configure the HTTP request pipeline.  
+            var app = builder.Build();
+
+            // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");
@@ -33,7 +34,10 @@ namespace SupermarketWEB
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+
+            app.UseAuthentication();   // <-- Agregado
             app.UseAuthorization();
+
             app.MapRazorPages();
             app.Run();
         }
