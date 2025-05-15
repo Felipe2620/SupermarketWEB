@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 using System.Security.Claims;
 
@@ -8,11 +10,18 @@ namespace SupermarketWEB.Pages.Account
 {
     public class LoginModel : PageModel
     {
+        private readonly SupermarketContext _context;
+
+        public LoginModel(SupermarketContext context)
+        {
+            _context = context;
+        }
+
         [BindProperty]
         public Users Users { get; set; }
 
         [BindProperty]
-        public bool RememberMe { get; set; }  // <-- propiedad para checkbox
+        public bool RememberMe { get; set; }
 
         public void OnGet() { }
 
@@ -21,22 +30,23 @@ namespace SupermarketWEB.Pages.Account
             if (!ModelState.IsValid)
                 return Page();
 
-            // Validar credenciales
-            if (Users.Email == "Correo@gmail.com" && Users.Password == "12345")
+            var userInDb = await _context.Users
+                .FirstOrDefaultAsync(u => u.Email == Users.Email);
+
+            if (userInDb != null && userInDb.Password == Users.Password) // Mejora con hash
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, "Admin"),
-                    new Claim(ClaimTypes.Email, Users.Email)
+                    new Claim(ClaimTypes.Name, userInDb.Name ?? "Usuario"),
+                    new Claim(ClaimTypes.Email, userInDb.Email)
                 };
 
                 var identity = new ClaimsIdentity(claims, "MyCookieAuth");
                 var principal = new ClaimsPrincipal(identity);
 
-                // Aquí pasamos el parámetro RememberMe para controlar duración de la cookie
                 var authProperties = new AuthenticationProperties
                 {
-                    IsPersistent = RememberMe // persistir cookie si el usuario marca "Recuérdame"
+                    IsPersistent = RememberMe
                 };
 
                 await HttpContext.SignInAsync("MyCookieAuth", principal, authProperties);
@@ -44,7 +54,6 @@ namespace SupermarketWEB.Pages.Account
                 return RedirectToPage("/Index");
             }
 
-            // Si las credenciales no son válidas
             ModelState.AddModelError(string.Empty, "Correo o contraseña inválidos");
             return Page();
         }
