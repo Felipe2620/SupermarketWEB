@@ -35,7 +35,7 @@ namespace SupermarketWEB
             app.UseStaticFiles();
             app.UseRouting();
 
-            app.UseAuthentication();   // <-- Agregado
+            app.UseAuthentication();  
             app.UseAuthorization();
 
             app.MapRazorPages();

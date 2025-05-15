@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Identity; // <-- Agrega este using
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 
@@ -33,7 +34,11 @@ namespace SupermarketWEB.Pages.Account
                 return Page();
             }
 
-            _context.Users.Add(User); // En el futuro puedes hashear la contraseña
+            // Hashear la contraseña antes de guardar
+            var hasher = new PasswordHasher<Users>();
+            User.Password = hasher.HashPassword(User, User.Password);
+
+            _context.Users.Add(User);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("Login");

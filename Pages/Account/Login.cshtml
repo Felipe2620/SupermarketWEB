@@ -104,14 +104,21 @@
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 
         <div class="mb-3">
-            <label for="email">Correo Electrónico</label>
+            <label for="Name">Nombre</label>
+            <input type="name" class="form-control" asp-for="Users.Name" id="email" placeholder="Correo" />
+            <div class="form-text">Tu información se mantiene privada.</div>
+            <span class="text-danger" asp-validation-for="Users.Name"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Email">Correo Electrónico</label>
             <input type="email" class="form-control" asp-for="Users.Email" id="email" placeholder="Correo" />
             <div class="form-text">Tu información se mantiene privada.</div>
             <span class="text-danger" asp-validation-for="Users.Email"></span>
         </div>
 
         <div class="mb-3">
-            <label for="password">Contraseña</label>
+            <label for="Password">Contraseña</label>
             <input type="password" class="form-control" asp-for="Users.Password" id="password" placeholder="Contraseña" />
             <span class="text-danger" asp-validation-for="Users.Password"></span>
         </div>
@@ -122,6 +129,7 @@
         </div>
 
         <button type="submit" class="btn-submit">Iniciar Sesión</button>
+
         <p style="margin-top: 20px; text-align: center; font-size: 14px;">
             ¿No tienes cuenta? <a href="/Account/Register" style="color: #0071e3; text-decoration: none;">Regístrate aquí</a>
         </p>
